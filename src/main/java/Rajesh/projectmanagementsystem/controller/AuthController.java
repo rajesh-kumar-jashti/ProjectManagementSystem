@@ -3,10 +3,12 @@ package Rajesh.projectmanagementsystem.controller;
 
 import Rajesh.projectmanagementsystem.config.JwtProvider;
 import Rajesh.projectmanagementsystem.model.User;
+import Rajesh.projectmanagementsystem.repository.SubscriptionRepository;
 import Rajesh.projectmanagementsystem.repository.UserRepository;
 import Rajesh.projectmanagementsystem.request.LoginRequest;
 import Rajesh.projectmanagementsystem.response.AuthResponse;
 import Rajesh.projectmanagementsystem.service.CustomUserDetailsImpl;
+import Rajesh.projectmanagementsystem.service.SubscriptionService;
 import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -35,6 +37,9 @@ public class AuthController {
     @Autowired
     private CustomUserDetailsImpl customUserDetails;
 
+    @Autowired
+    private SubscriptionService subscriptionService;
+
     @PostMapping("/signup")
     public ResponseEntity<AuthResponse>createUserHandle(@RequestBody User user) throws  Exception{
         User isUserExist = userRepository.findByEmail(user.getEmail());
@@ -46,6 +51,8 @@ public class AuthController {
         createdUser.setEmail(user.getEmail());
         createdUser.setFullName(user.getFullName());
         User savedUser = userRepository.save(createdUser);
+
+        subscriptionService.createSubscription(savedUser);
 
         Authentication authentication = new UsernamePasswordAuthenticationToken(user.getEmail(), user.getPassword());
         SecurityContextHolder.getContext().setAuthentication(authentication);

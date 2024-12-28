@@ -20,7 +20,6 @@ public interface ProjectService {
 
     void addUserToProject(Long projectId, Long UserId) throws Exception;
 
-
     void removeUserToProject(Long projectId, Long UserId) throws Exception;
 
     Chat getChatByProjectId(Long projectId) throws Exception;

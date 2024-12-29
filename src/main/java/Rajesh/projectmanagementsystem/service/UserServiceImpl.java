@@ -3,7 +3,9 @@ package Rajesh.projectmanagementsystem.service;
 import Rajesh.projectmanagementsystem.config.JwtProvider;
 import Rajesh.projectmanagementsystem.model.User;
 import Rajesh.projectmanagementsystem.repository.UserRepository;
-import org.springframework.data.jpa.repository.JpaRepository;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -12,7 +14,9 @@ import java.util.Optional;
 @Service
 public class UserServiceImpl implements UserService {
 
+    @Autowired
     private UserRepository userRepository;
+
 
     @Override
     public User findUserProfileByJwt(String jwt) throws Exception {
@@ -22,6 +26,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User findUserByEmail(String email) throws Exception {
+        System.out.println(email);
         User user = userRepository.findByEmail(email);
         if(user==null){
             throw new Exception("user not found");

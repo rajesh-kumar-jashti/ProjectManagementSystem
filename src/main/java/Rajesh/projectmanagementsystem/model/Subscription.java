@@ -13,7 +13,7 @@ import java.time.LocalDate;
 @AllArgsConstructor
 public class Subscription {
     @Id
-    @GeneratedValue(GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private LocalDate subscriptionStartDate;
     private LocalDate getsubscriptionEndDate;

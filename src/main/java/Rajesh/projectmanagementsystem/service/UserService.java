@@ -1,8 +1,10 @@
 package Rajesh.projectmanagementsystem.service;
 
 import Rajesh.projectmanagementsystem.model.User;
+import org.springframework.stereotype.Service;
 
 import java.util.concurrent.ExecutionException;
+
 
 public interface UserService {
 

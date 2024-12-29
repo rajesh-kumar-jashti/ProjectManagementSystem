@@ -23,7 +23,7 @@ public class InvitationServiceImpl implements InvitationService {
 
         Invitation invitation = new Invitation();
         invitation.setEmail(email);
-        invitation.setProjectId(projectId);
+        invitation.setProject_id(projectId);
         invitation.setToken(invitationToken);
 
         invitationRepository.save(invitation);

@@ -16,10 +16,13 @@ import java.util.Optional;
 @Service
 public class CommentServiceimpl implements CommentService{
 
+    @Autowired
     private CommentRepository commentRepository;
 
+    @Autowired
     private IssueRepository issueRepository;
 
+    @Autowired
     private UserRepository userRepository;
 
     @Override

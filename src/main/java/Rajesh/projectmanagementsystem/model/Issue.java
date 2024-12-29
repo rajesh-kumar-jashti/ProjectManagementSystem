@@ -21,7 +21,7 @@ public class Issue {
     private String description;
     private String status;
 
-    private Long projectId;
+    private Long projectID;
     private String priority;
     private LocalDate dueDate;
     private List<String> tags = new ArrayList<>();
@@ -29,6 +29,7 @@ public class Issue {
     @ManyToOne
     private User assignee;
 
+    @JsonIgnore
     @ManyToOne
     private Project project;
 
